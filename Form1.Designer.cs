@@ -36,8 +36,8 @@
             toolStripStatusLabel2 = new ToolStripStatusLabel();
             toolStrip1 = new ToolStrip();
             toolStripButton1 = new ToolStripButton();
-            toolStripButton2 = new ToolStripButton();
-            toolStripButton3 = new ToolStripButton();
+            SignersButton = new ToolStripButton();
+            ExtractButton = new ToolStripButton();
             toolStripButton4 = new ToolStripButton();
             statusStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
@@ -85,7 +85,7 @@
             // toolStrip1
             // 
             toolStrip1.ImageScalingSize = new Size(48, 48);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton1, toolStripButton2, toolStripButton3, toolStripButton4 });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton1, SignersButton, ExtractButton, toolStripButton4 });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(685, 55);
@@ -101,23 +101,23 @@
             toolStripButton1.Text = "Выбрать файл cms";
             toolStripButton1.Click += toolStripButton1_Click;
             // 
-            // toolStripButton2
+            // SignersButton
             // 
-            toolStripButton2.Image = Properties.Resources.handwriting;
-            toolStripButton2.ImageTransparentColor = Color.Magenta;
-            toolStripButton2.Name = "toolStripButton2";
-            toolStripButton2.Size = new Size(128, 52);
-            toolStripButton2.Text = "Подписанты";
-            toolStripButton2.Click += toolStripButton2_Click;
+            SignersButton.Image = Properties.Resources.handwriting;
+            SignersButton.ImageTransparentColor = Color.Magenta;
+            SignersButton.Name = "SignersButton";
+            SignersButton.Size = new Size(128, 52);
+            SignersButton.Text = "Подписанты";
+            SignersButton.Click += toolStripButton2_Click;
             // 
-            // toolStripButton3
+            // ExtractButton
             // 
-            toolStripButton3.Image = Properties.Resources.carton_box;
-            toolStripButton3.ImageTransparentColor = Color.Magenta;
-            toolStripButton3.Name = "toolStripButton3";
-            toolStripButton3.Size = new Size(213, 52);
-            toolStripButton3.Text = "Извлечь документ и окрыть";
-            toolStripButton3.Click += toolStripButton3_Click;
+            ExtractButton.Image = Properties.Resources.carton_box;
+            ExtractButton.ImageTransparentColor = Color.Magenta;
+            ExtractButton.Name = "ExtractButton";
+            ExtractButton.Size = new Size(213, 52);
+            ExtractButton.Text = "Извлечь документ и окрыть";
+            ExtractButton.Click += toolStripButton3_Click;
             // 
             // toolStripButton4
             // 
@@ -153,8 +153,8 @@
         private StatusStrip statusStrip1;
         private ToolStrip toolStrip1;
         private ToolStripButton toolStripButton1;
-        private ToolStripButton toolStripButton2;
-        private ToolStripButton toolStripButton3;
+        private ToolStripButton SignersButton;
+        private ToolStripButton ExtractButton;
         private ToolStripButton toolStripButton4;
         private ToolStripStatusLabel toolStripStatusLabel2;
     }

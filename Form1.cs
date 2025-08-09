@@ -19,10 +19,15 @@ namespace nztSigner
             if (string.IsNullOrEmpty(filename) || !File.Exists(filename))
             {
                 Text = "nztSigner - Файл не выбран";
+                SignersButton.Enabled = false;
+                ExtractButton.Enabled = false;
                 return;
             }
 
             Text = $"{Path.GetFileName(filename)}";
+
+            SignersButton.Enabled = true;
+            ExtractButton.Enabled = true;
         }
 
         protected override void OnLoad(EventArgs e)
