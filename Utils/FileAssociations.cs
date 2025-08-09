@@ -1,6 +1,6 @@
 using Microsoft.Win32;
 
-namespace nztSigner
+namespace nztSigner.Utils
 {
     public static class FileAssociations
     {
@@ -36,7 +36,7 @@ namespace nztSigner
                 }
 
                 // Notify the system about the change
-                SHChangeNotify(0x08000000, 0x0000, IntPtr.Zero, IntPtr.Zero);
+                SHChangeNotify(0x08000000, 0x0000, nint.Zero, nint.Zero);
             }
             catch (Exception ex)
             {
@@ -46,6 +46,6 @@ namespace nztSigner
         }
 
         [System.Runtime.InteropServices.DllImport("shell32.dll")]
-        private static extern void SHChangeNotify(int eventId, int flags, IntPtr item1, IntPtr item2);
+        private static extern void SHChangeNotify(int eventId, int flags, nint item1, nint item2);
     }
 }

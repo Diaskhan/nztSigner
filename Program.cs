@@ -1,3 +1,5 @@
+using nztSigner.Utils;
+
 namespace nztSigner
 {
     internal static class Program
