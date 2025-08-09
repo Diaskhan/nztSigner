@@ -40,6 +40,7 @@ namespace nztSigner
                 }
                 catch (Exception ex)
                 {
+                    Hide();
                     MessageBox.Show($"Ошибка при загрузке файла: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Application.Exit();
                 }
@@ -106,16 +107,13 @@ namespace nztSigner
                 {
                     File.WriteAllBytes(outputFilename, contentBytes);
                 }
-                catch (Exception ex)
+                catch
                 {
                     MessageBox.Show("Ошибка при сохранении файла." + Environment.NewLine + outputFilename + Environment.NewLine + "Возможно файл открыть в другой программе.");
                     return;
                 }
 
-                //toolStripStatusLabel1.Text = $"Файл успешно извлечён: {outputFilename}";
-
                 string[] blockedExtensions = { ".exe", ".bat", ".cmd", ".msi", ".vbs", ".js", ".scr", ".ps1" };
-
                 string ext = Path.GetExtension(outputFilename).ToLowerInvariant();
 
                 if (blockedExtensions.Contains(ext))
@@ -170,8 +168,9 @@ namespace nztSigner
                 DateTime? signingTime = null;
                 if (signingTimeAttr != null)
                 {
-                    var attrValue = signingTimeAttr.AttrValues[0];
-                    signingTime = SignerUtils.ParseAsn1UtcTimeString(attrValue.ToString());
+                    var attrValue = signingTimeAttr.AttrValues.SingleOrDefault()?.ToString();
+                    if (!string.IsNullOrWhiteSpace(attrValue))
+                        signingTime = SignerUtils.ParseAsn1UtcTimeString(attrValue);
                 }
 
                 var selector = signer.SignerID;
@@ -215,8 +214,6 @@ namespace nztSigner
                     if (signingTime != null)
                         parentNode.Nodes.Add(new TreeNode($"Дата подписания: {signingTime:dd/MM/yyyy HH:mm:ss} (UTC)"));
 
-
-
                     // Проверка сертификата
                     bool isCertValid = false;
                     try
@@ -225,8 +222,6 @@ namespace nztSigner
                         isCertValid = true;
                     }
                     catch { isCertValid = false; }
-
-
 
                     string validationInfo = $"Результат проверки сертификата: {(isCertValid ? "Успешно" : "Неуспешно")}";
                     parentNode.Nodes.Add(new TreeNode(validationInfo));

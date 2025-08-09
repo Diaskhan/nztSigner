@@ -10,13 +10,12 @@ namespace nztSigner.Utils
             DateTime? dateA = null, dateB = null;
 
             var attrA = a.SignedAttributes?[Org.BouncyCastle.Asn1.Cms.CmsAttributes.SigningTime];
-
             if (attrA != null)
-                dateA = ParseAsn1UtcTimeString(attrA.AttrValues[0].ToString());
+                dateA = ParseAsn1UtcTimeString(attrA.AttrValues[0]?.ToString());
 
             var attrB = b.SignedAttributes?[Org.BouncyCastle.Asn1.Cms.CmsAttributes.SigningTime];
             if (attrB != null)
-                dateB = ParseAsn1UtcTimeString(attrB.AttrValues[0].ToString());
+                dateB = ParseAsn1UtcTimeString(attrB.AttrValues[0]?.ToString());
 
             // Сортировка: сначала без даты, потом по возрастанию даты
             if (dateA == null && dateB == null) return 0;
@@ -26,7 +25,7 @@ namespace nztSigner.Utils
         }
 
 
-        public static DateTime ParseAsn1UtcTimeString(string utcTime)
+        public static DateTime ParseAsn1UtcTimeString(string? utcTime)
         {
             // Формат: YYMMDDhhmmssZ
             if (string.IsNullOrWhiteSpace(utcTime) || utcTime.Length != 13 || utcTime[12] != 'Z')
