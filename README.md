@@ -18,8 +18,7 @@
 -Делает ассоциацию файлов *.cms с самой программой, чтобы сразу открывать cms файл через проводник
 
 
-Обратную связь можете кидать на 
 
-почту: Diaskhan@yandex.kz
+Обратную связь можете кидать на почту: Diaskhan@yandex.kz
 
 github: https://github.com/Diaskhan/nztSigner/issues
