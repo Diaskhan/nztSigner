@@ -14,5 +14,4 @@
 
 #
 
-Обратную связь можете кидать на почту: Diaskhan@yandex.kz
-или github: https://github.com/Diaskhan/nztSigner/issues
+Обратную связь можете кидать : https://github.com/Diaskhan/nztSigner/issues
